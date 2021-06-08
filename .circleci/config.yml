@@ -1,12 +1,21 @@
-# to use orbs, must use version >= 2.1
 version: 2.1
 orbs:
-  # import Cypress orb by specifying an exact version x.y.z
-  # or the latest version 1.x.x using "@1" syntax
-  cypress: cypress-io/cypress@6.6.0
+  cypress: cypress-io/cypress@1
 workflows:
   build:
     jobs:
-      # "cypress" is the name of the imported orb
-      # "run" is the name of the job defined in Cypress orb
-      - cypress/run
+      # install dependencies first (on 1 machine)
+      - cypress/install
+      # now run tests
+      - cypress/run:
+          # give this job a custom name for clarity
+          name: 'cypress-tau-course'
+          requires:
+            # use previously installed dependencies
+            # to avoid installing them on each machine running tests
+            - cypress/install
+          record: true # record results to Cypress Dashboard
+          parallel: true # run tests in parallel
+          parallelism: 3 # use 3 CircleCI machines
+          start: 'npm start' # start server before running tests
+          test: 'npm cy:run:recordkey' # start server before running tests
