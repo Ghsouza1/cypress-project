@@ -1,1 +1,13 @@
 node_modules
+node_modules/
+package-lock.json
+
+# System Files
+.DS
+.DS_Store
+.DS_STORE
+.DS_Store?
+
+
+/cypress/videos
+/cypress/screenshots
