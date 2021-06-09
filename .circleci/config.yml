@@ -7,7 +7,7 @@ workflows:
       # install dependencies first (on 1 machine)
       - cypress/install
       # now run tests
-      - cypress-io/run:
+      - cypress/run:
           # give this job a custom name for clarity
           name: 'cypress-tau-course'
           requires:
