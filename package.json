@@ -8,6 +8,7 @@
     "cy:run": "./node_modules/.bin/cypress run",
     "cy:run:headless": "npm install && ./node_modules/.bin/cypress run --headless",
     "cy:run:recordkey": "npm install && ./node_modules/.bin/cypress run --record --key 6624b18b-9581-4f57-b060-fbc73ed34e27",
+    "cy:run:parallel": "npm install && ./node_modules/.bin/cypress run --record --key=6624b18b-9581-4f57-b060-fbc73ed34e27 --parallel",
     "cy:test:waiton": "npm start & wait-on http://localhost:3000",
     "start": "cd app && npm start",
     "postinstall": "cd app && npm install"
