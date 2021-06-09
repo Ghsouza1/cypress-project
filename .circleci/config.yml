@@ -17,4 +17,3 @@ workflows:
           parallel: true # run tests in parallel
           parallelism: 3 # use 3 CircleCI machines
           start: 'npm start' # start server before running tests
-          test: 'npm cy:run:recordkey' # start server before running tests
