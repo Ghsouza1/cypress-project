@@ -10,4 +10,6 @@ package-lock.json
 
 
 /cypress/videos
+/videos
 /cypress/screenshots
+/screenshots
