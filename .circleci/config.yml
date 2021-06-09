@@ -7,14 +7,13 @@ workflows:
       # install dependencies first (on 1 machine)
       - cypress/install
       # now run tests
-      - cypress/run:
+      - cypress-io/run:
           # give this job a custom name for clarity
           name: 'cypress-tau-course'
           requires:
             # use previously installed dependencies
             # to avoid installing them on each machine running tests
             - cypress/install
-          record: true # record results to Cypress Dashboard
           parallel: true # run tests in parallel
           parallelism: 3 # use 3 CircleCI machines
           start: 'npm start' # start server before running tests
