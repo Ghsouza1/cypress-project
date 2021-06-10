@@ -1,14 +1,12 @@
 {
-  "name": "cypress-tau-course",
+  "name": "cypress-project",
   "projectId": "45jxbw",
   "version": "1.0.0",
-  "description": "Companion repo for Cypress course on Test automation university",
+  "description": "Cypress Project that connect with circleci",
   "scripts": {
     "cy:open": "./node_modules/.bin/cypress open",
     "cy:run": "./node_modules/.bin/cypress run",
     "cy:run:headless": "npm install && ./node_modules/.bin/cypress run --headless",
-    "cy:run:recordkey": "npm install && ./node_modules/.bin/cypress run --record --key 6624b18b-9581-4f57-b060-fbc73ed34e27",
-    "cy:run:parallel": "npm install && ./node_modules/.bin/cypress run --record --key=6624b18b-9581-4f57-b060-fbc73ed34e27 --parallel",
     "test": "npm install && npx cypress run --record --key=6624b18b-9581-4f57-b060-fbc73ed34e27",
     "cy:start-server": "start-server-and-test start-server http://localhost:3000 test",
     "cy:test:waiton": "npm start & wait-on http://localhost:3000",
@@ -22,7 +20,7 @@
     "course",
     "tau"
   ],
-  "author": "Filip Hric",
+  "author": "Gustavo Souza",
   "license": "ISC",
   "devDependencies": {
     "@4tw/cypress-drag-drop": "^1.6.0",

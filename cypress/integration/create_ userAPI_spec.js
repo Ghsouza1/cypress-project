@@ -4,7 +4,6 @@ import {
     fakerPerson
 } from '../support/test-helpers';
 
-let id = '';
 let person = fakerPerson();
 
 beforeEach(() => {
@@ -45,5 +44,4 @@ describe('Trello', () => {
                 expect(board.response.statusCode).to.eq(201)
             })
     });
-
 });
