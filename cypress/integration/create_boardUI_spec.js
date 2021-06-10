@@ -26,7 +26,6 @@ describe('Trello', () => {
     cy
       .visit('/')
 
-    // addBoard
     cy.addBoard(person.name)
 
     cy

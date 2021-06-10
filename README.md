@@ -1,18 +1,21 @@
-# [Cypress advanced - Test automation University](https://testautomationu.applitools.com/advanced-cypress-tutorial/)
+# Cypress project
 
-Hello there 👋
+Hello there !!!
 
-This is a repo for [Test automation University course on advanced Cypress](https://testautomationu.applitools.com/advanced-cypress-tutorial/) by [Applitools](http://applitools.com/). It contains all the examples from videos + the application for testing.
+This repo contains the app from [Test automation University course on advanced Cypress](https://testautomationu.applitools.com/advanced-cypress-tutorial/) by [Applitools](http://applitools.com/)
+
 
 ## Instalation
-`git clone https://github.com/filiphric/cypress-tau-course.git`
+`git clone https://github.com/Ghsouza1/cypress-tau-course.git`
 
 `npm install`
 
-`npm start`
+`npm cy:start-server`
 
-And that’s it! You can start learning!
+## Goal
 
-Hope you enjoy this.
+* The goal of this repo is to connect with CI/CD to run the tests by actions on the repo and also the possibility to run the tests in parallel.
 
-For more tips and tricks regarding Cypress, make sure you visit [my homepage](https://filiphric.com)
+## Author
+
+* Gustavo Souza

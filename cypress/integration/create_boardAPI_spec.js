@@ -37,5 +37,4 @@ describe('My Boards', () => {
       .should('be.visible')
       .contains(person.name)
   });
-
 });

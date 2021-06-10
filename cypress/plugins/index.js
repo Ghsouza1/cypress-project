@@ -5,6 +5,3 @@ module.exports = (on, config) => {
     setupDb
   })
 }
-
-
-// require('@applitools/eyes-cypress')(module);

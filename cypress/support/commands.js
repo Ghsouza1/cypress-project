@@ -3,7 +3,6 @@ import 'cypress-file-upload';
 import "cypress-real-events/support";
 
 Cypress.Commands.add('addBoard', (input) => {
-
   cy
     .get('[data-cy="create-board"]')
     .click();
@@ -11,5 +10,4 @@ Cypress.Commands.add('addBoard', (input) => {
   cy
     .get('[data-cy=new-board-input]')
     .type(input + '{enter}');
-
 })
