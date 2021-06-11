@@ -11,42 +11,37 @@ beforeEach(() => {
 })
 
 describe('Trello', () => {
-    it('Create an user', () => {
-        const options = {
-            method: 'POST',
-            url: '/signup',
-            body: {
-                "email": person.email,
-                "password": person.password
-            },
-            failOnStatusCode: false
-        }
-
-        cy.request(options).then((res) => {
-            expect(res.status).to.eq(201);
-        })
+    it('Create an user - UI', () => {
+        cy
+            .intercept({
+                method: 'POST',
+                url: '/signup',
+                failOnStatusCode: false
+            }).as('createUser')
 
         cy
             .visit('/')
 
-        const board = {
-            method: 'POST',
-            url: '/api/boards',
-            body: {
-                "name": person.name
-            },
-            failOnStatusCode: false
-        }
+        cy.get('[data-cy=login-menu]')
+            .invoke('show')
+            .click()
 
-        cy.request(board).then((res) => {
-            expect(res.status).to.eq(201);
-        })
+        cy.get(':nth-child(2) > .LoginModule_logSignSwitch > a')
+            .click()
 
-        cy.get('[data-cy=board-item]')
-            .should('be.visible')
+        cy.get('[data-cy=signup-email]')
+            .type(person.email)
 
-        cy.get('[data-cy=board-item] > .board_title')
-            .should('be.visible')
-            .contains(person.name)
+        cy.get('[data-cy=signup-password]')
+            .type(person.password)
+
+        cy.get('[data-cy=signup]')
+            .click()
+
+        cy
+            .wait('@createUser')
+            .then((board) => {
+                expect(board.response.statusCode).to.eq(201)
+            })
     });
 });
