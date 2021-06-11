@@ -4,13 +4,14 @@ Hello there !!!
 
 This repo contains the app from [Test automation University course on advanced Cypress](https://testautomationu.applitools.com/advanced-cypress-tutorial/) by [Applitools](http://applitools.com/)
 
-
 ## Instalation
 `git clone https://github.com/Ghsouza1/cypress-tau-course.git`
 
 `npm install`
 
-`npm cy:start-server`
+`npm run start`
+
+`npm run cy:run`
 
 ## Goal
 
