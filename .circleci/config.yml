@@ -9,7 +9,7 @@ workflows:
       # now run tests
       - cypress/run:
           # give this job a custom name for clarity
-          name: 'cypress-tau-course'
+          name: 'cypress-project'
           requires:
             # use previously installed dependencies
             # to avoid installing them on each machine running tests
@@ -17,7 +17,7 @@ workflows:
           record: true
           parallel: true # run tests in parallel
           parallelism: 3 # use 3 CircleCI machines
-          group: "UI - Chrome"
+          group: "CircleCI Test"
           start: 'npm start' # start server before running tests
           wait-on: "http://localhost:3000"
           command: 'npx cypress run --record --key=6624b18b-9581-4f57-b060-fbc73ed34e27 --parallel'
