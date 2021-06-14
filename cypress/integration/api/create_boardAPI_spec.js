@@ -2,7 +2,7 @@
 
 import {
   fakerPerson
-} from '../support/test-helpers';
+} from '../../support/test-helpers';
 
 let id = '';
 let person = fakerPerson();

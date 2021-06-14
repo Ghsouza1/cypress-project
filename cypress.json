@@ -2,5 +2,6 @@
   "baseUrl": "http://localhost:3000",
   "viewportHeight": 500,
   "viewportWidth": 700,
-  "projectId": "bm9rb2"
+  "projectId": "bm9rb2",
+  "integrationFolder": "cypress/integration"
 }

@@ -1,21 +1,14 @@
 {
   "boards": [
     {
-      "name": "Ms. Kenneth Pacocha",
+      "name": "Mr. Fannie Kuhic",
       "user": 0,
-      "id": 84950793954,
-      "starred": true,
-      "created": "2021-06-10"
+      "id": 6842735783,
+      "starred": false,
+      "created": "2021-06-14"
     }
   ],
   "tasks": [],
   "users": [],
-  "lists": [
-    {
-      "boardId": 84950793954,
-      "title": "Clay.Jakubowski",
-      "id": 46484507678,
-      "created": "2021-06-10"
-    }
-  ]
+  "lists": []
 }
