@@ -20,7 +20,7 @@ workflows:
           group: "API Tests"
           start: 'npm start' # start server before running tests
           wait-on: "http://localhost:3000"
-          command: 'npx cypress run --record --key=6624b18b-9581-4f57-b060-fbc73ed34e27 --group API Tests --spec "cypress/integration/api/*.spec.js" --parallel'
+          command: 'npx cypress run --record --key=6624b18b-9581-4f57-b060-fbc73ed34e27 --group API Tests --spec "cypress/integration/api/*.js" --parallel'
             # now run tests
       - cypress/run:
           # give this job a custom name for clarity
@@ -35,4 +35,4 @@ workflows:
           group: "UI Tests"
           start: 'npm start' # start server before running tests
           wait-on: "http://localhost:3000"
-          command: 'npx cypress run --record --key=6624b18b-9581-4f57-b060-fbc73ed34e27  --group UI Tests --spec "cypress/integration/ui/*.spec.js" --parallel'
+          command: 'npx cypress run --record --key=6624b18b-9581-4f57-b060-fbc73ed34e27  --group UI Tests --spec "cypress/integration/ui/*.js" --parallel'
