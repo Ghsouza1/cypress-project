@@ -3,6 +3,5 @@
   "viewportHeight": 500,
   "viewportWidth": 700,
   "projectId": "bm9rb2",
-  "integrationFolder": "cypress/integration",
-  "testFiles": "*.js"
+  "integrationFolder": "cypress/integration"
 }
