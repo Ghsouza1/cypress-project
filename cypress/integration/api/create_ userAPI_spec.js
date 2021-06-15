@@ -14,7 +14,7 @@ describe('Trello', () => {
     it('Create an user - API', () => {
         const options = {
             method: 'POST',
-            url: '/signup',
+            url: '/signup', //signup
             body: {
                 "email": person.email,
                 "password": person.password
