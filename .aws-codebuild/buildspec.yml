@@ -5,7 +5,7 @@ phases:
     runtime-versions:
       nodejs: 10
     commands:
-      - npm install
+      - npm i
   pre_build:
     commands:
       - npm run cy:verify
