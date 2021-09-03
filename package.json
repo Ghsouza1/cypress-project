@@ -4,11 +4,13 @@
   "version": "1.0.0",
   "description": "Cypress Project that connect with circleci",
   "scripts": {
-    "cy:open": "./node_modules/.bin/cypress open",
-    "cy:run": "npm install && ./node_modules/.bin/cypress run",
-    "cy:run:headless": "npm install && ./node_modules/.bin/cypress run --headless",
-    "test": "npm install && ./node_modules/.bin/cypress run --record --key=cdad7fdf-f81f-4dac-aef8-42c660a6bd16",
-    "cy:start-server": "start-server-and-test start http://localhost:3000 test",
+    "cy:open": "npx cypress open",
+    "cy:run": "npm install && npx cypress run",
+    "cy:run:headless": "npm install && npx cypress run --headless",
+    "test": "npm install && npx cypress run --record --key=cdad7fdf-f81f-4dac-aef8-42c660a6bd16",
+    "cy:start-server-cy:run:headless": "start-server-and-test start http://localhost:3000 cy:run:headless",
+    "cy:start-server-cy:run": "start-server-and-test start http://localhost:3000 cy:run",
+    "cy:start-server-test": "start-server-and-test start http://localhost:3000 test",
     "cy:test:waiton": "npm start && wait-on http://localhost:3000",
     "start": "cd app && npm start",
     "postinstall": "cd app && npm install"

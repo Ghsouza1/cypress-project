@@ -1,14 +1,21 @@
 {
   "boards": [
     {
-      "name": "Mr. Fannie Kuhic",
+      "name": "Rufus Barton",
       "user": 0,
-      "id": 6842735783,
-      "starred": false,
-      "created": "2021-06-14"
+      "id": 64740411495,
+      "starred": true,
+      "created": "2021-09-02"
     }
   ],
   "tasks": [],
   "users": [],
-  "lists": []
+  "lists": [
+    {
+      "boardId": 64740411495,
+      "title": "Myrtis19",
+      "id": 44764629987,
+      "created": "2021-09-02"
+    }
+  ]
 }
