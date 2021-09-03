@@ -8,6 +8,7 @@
     "cy:run": "npm install && npx cypress run",
     "cy:run:headless": "npm install && npx cypress run --headless",
     "test": "npm install && npx cypress run --record --key=cdad7fdf-f81f-4dac-aef8-42c660a6bd16",
+    "cy:start-server-cy:open": "start-server-and-test start http://localhost:3000 cy:open",
     "cy:start-server-cy:run:headless": "start-server-and-test start http://localhost:3000 cy:run:headless",
     "cy:start-server-cy:run": "start-server-and-test start http://localhost:3000 cy:run",
     "cy:start-server-test": "start-server-and-test start http://localhost:3000 test",
