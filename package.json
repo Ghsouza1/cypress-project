@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "description": "Cypress Project that connect with circleci",
   "scripts": {
-    "cy:open": "npx cypress open",
+    "cy:open": "npm install && npx cypress open",
     "cy:run": "npm install && npx cypress run",
     "cy:run:headless": "npm install && npx cypress run --headless",
     "test": "npm install && npx cypress run --record --key=cdad7fdf-f81f-4dac-aef8-42c660a6bd16",
@@ -12,9 +12,13 @@
     "cy:start-server-cy:run:headless": "start-server-and-test start http://localhost:3000 cy:run:headless",
     "cy:start-server-cy:run": "start-server-and-test start http://localhost:3000 cy:run",
     "cy:start-server-test": "start-server-and-test start http://localhost:3000 test",
-    "cy:test:waiton": "npm start && wait-on http://localhost:3000",
+    "cy:start-server-allure": "start-server-and-test start http://localhost:3000 cy:allure",
+    "cy:waiton": "npm start && wait-on http://localhost:3000",
     "start": "cd app && npm start",
-    "postinstall": "cd app && npm install"
+    "postinstall": "cd app && npm install",
+    "cy:allure": "npm install && npx cypress run --config video=false --env allure=true,allureResultsPath=allure-results/results",
+    "clean:allure": "allure generate allure-results --clean",
+    "open:allure": "allure open allure-report"
   },
   "keywords": [
     "cypress",
@@ -28,9 +32,16 @@
     "@4tw/cypress-drag-drop": "^1.6.0",
     "@applitools/eyes-cypress": "^3.20.4",
     "@babel/plugin-transform-runtime": "^7.14.3",
-    "Faker": "^0.7.2",
+    "@shelex/cypress-allure-plugin": "^2.11.1",
     "cypress": "^6.6.0",
     "cypress-file-upload": "^5.0.2",
+    "cypress-mochawesome-reporter": "^2.2.1",
+    "cypress-multi-reporters": "^1.5.0",
+    "mocha": "^9.1.1",
+    "mocha-junit-reporter": "^2.0.0",
+    "mochawesome": "^6.2.2",
+    "mochawesome-merge": "^4.2.0",
+    "mochawesome-report-generator": "^5.2.0",
     "start-server-and-test": "^1.12.5"
   },
   "dependencies": {

@@ -8,8 +8,16 @@ package-lock.json
 .DS_STORE
 .DS_Store?
 
-
+# cypress folders
 /cypress/videos
 /videos
 /cypress/screenshots
 /screenshots
+/cypress/results
+/cypress/reports
+
+# allure folders
+allure-report
+allure-report/
+allure-results
+allure-results/

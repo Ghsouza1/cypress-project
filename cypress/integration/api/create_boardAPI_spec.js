@@ -7,12 +7,12 @@ import {
 let id = '';
 let person = fakerPerson();
 
-beforeEach(() => {
+before(() => {
   cy.request('POST', '/api/reset')
 })
 
-describe('My Boards', () => {
-  it('POST/Board', () => {
+describe('Trello', () => {
+  it('Create a Board - API', () => {
     cy
       .visit('/')
 
