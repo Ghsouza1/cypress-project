@@ -51,5 +51,5 @@ workflows:
           group: "UI Tests"
           start: 'npm start' # start server before running tests
           wait-on: "http://localhost:3000"
-          command: 'npx cypress run --config video=false --env allure=true,allureResultsPath=allure-results/results  --group Allure Results --parallel=true'
+          command: 'npx cypress run --record --key=cdad7fdf-f81f-4dac-aef8-42c660a6bd16 --config video=false --env allure=true,allureResultsPath=allure-results/results  --group Allure Results --parallel'
 
