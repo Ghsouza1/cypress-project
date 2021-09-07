@@ -15,8 +15,7 @@ describe('Trello', () => {
         cy
             .intercept({
                 method: 'POST',
-                url: '/signup',
-                failOnStatusCode: false
+                url: '/signup'
             }).as('createUser')
 
         cy

@@ -12,15 +12,11 @@ beforeEach(() => {
 })
 
 describe('Trello', () => {
-  it('POST/Board', () => {
+  it('Create a Board - UI', () => {
     cy
       .intercept({
         method: 'POST',
-        url: '/api/boards',
-        body: {
-          "name": person.name
-        },
-        failOnStatusCode: false
+        url: '/api/boards'
       }).as('createBoard')
 
     cy

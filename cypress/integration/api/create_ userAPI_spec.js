@@ -1,12 +1,22 @@
 /// <reference types="cypress" />
 
+/*
+TO DO 
+- adicionar report
+- refatorar api testes
+- refatorar ui testes
+- N browser
+- Tests run against a testing service (SauceLabs, BrowserStack or similar)
+- Tests run against mobile browsers
+*/
+
 import {
     fakerPerson
 } from '../../support/test-helpers';
 
 let person = fakerPerson();
 
-beforeEach(() => {
+before(() => {
     cy.request('POST', '/api/reset')
 })
 
@@ -14,7 +24,7 @@ describe('Trello', () => {
     it('Create an user - API', () => {
         const options = {
             method: 'POST',
-            url: '/signup', //signup
+            url: '/signup',
             body: {
                 "email": person.email,
                 "password": person.password
