@@ -9,3 +9,12 @@ jobs:
           command: |
             echo 'Hello World!'
             echo 'This is the delivery pipeline'
+  test:
+    docker:
+      - image: alpine:3.7
+    steps:
+      - run:
+          name: The Test Job
+          command: |
+            echo 'Hello Gustavo Souza!'
+            echo 'This is the delivery pipeline'
