@@ -15,8 +15,6 @@ jobs:
     docker:
       - image: alpine:3.7
     steps:
-      - run: npm install
-      - run: npm ci
       - cypress/install
       - run:
           name: API Tests
@@ -33,7 +31,6 @@ jobs:
     docker:
       - image: alpine:3.7
     steps:
-      - run: npm ci
       - cypress/install
       - run:
           name: UI Tests
@@ -50,7 +47,6 @@ jobs:
     docker:
       - image: alpine:3.7
     steps:
-      - run: npm ci
       - cypress/install
       - run:
           name: Running all the tests with allure=true
