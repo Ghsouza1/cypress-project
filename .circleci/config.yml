@@ -47,6 +47,7 @@ jobs:
     docker:
       - image: alpine:3.7
     steps:
+      - run: npm ci
       - cypress/install
       - run:
           name: Running all the tests with allure=true
@@ -82,7 +83,6 @@ workflows:
           - Cypress-Project
      - Generate-allure-report:
          requires:
-           - Cypress-Project
            - API Tests
            - UI Tests
            - Run-All
