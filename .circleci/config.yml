@@ -48,3 +48,7 @@ workflows:
           group: "Allure Report"
           command: |
             npm install -g allure-commandline --save-dev
+            allure generate --clean
+          post-steps:
+            - store_artifacts:
+                path: results
