@@ -51,7 +51,7 @@ workflows:
           wait-on: "http://localhost:3000"
           command: 'npx cypress run --record --key=cdad7fdf-f81f-4dac-aef8-42c660a6bd16 --group Run-All --config video=false --env allure=true,allureResultsPath=allure-results/results'
       - cypress/run:
-          name: generate allure report
+          name: Generate Allure Report
           requires:
             - API Tests
             - UI Tests
