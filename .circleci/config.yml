@@ -20,6 +20,7 @@ jobs:
           name: API Tests
           requires:
             - cypress/install
+            - npm ci
           record: true
           parallel: true # run tests in parallel
           parallelism: 2 # use 3 CircleCI machines
