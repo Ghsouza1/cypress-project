@@ -1,57 +1,73 @@
 version: 2.1
+orbs:
+  cypress: cypress-io/cypress@1
+  allure: ayte/allure@0.1.3
 jobs:
-  Hello-World:
+  Cypress-Project:
     docker:
       - image: alpine:3.7
     steps:
       - run:
-          name: Hello World
+          name: Cypress-Project
           command: |
-            echo 'Hello World!'
-            echo 'This is the delivery pipeline'
-  I-Have-Code:
+            echo 'Cypress-Project is running'
+  API Tests:
     docker:
       - image: alpine:3.7
     steps:
-      - checkout
-      - run:
-          name: Code Has Arrived
-          command: |
-            ls -al
-            echo '^^^That should look familiar^^^'
-  Run-With-Node:
+      - cypress/install
+      - cypress/run:
+          name: API Tests
+          requires:
+            - cypress/install
+          record: true
+          parallel: true # run tests in parallel
+          parallelism: 2 # use 3 CircleCI machines
+          group: "API Tests"
+          start: 'npm start' # start server before running tests
+          wait-on: "http://localhost:3000"
+          command: 'npx cypress run --record --key=cdad7fdf-f81f-4dac-aef8-42c660a6bd16 --group API Tests --spec ./cypress/integration/api/*.js --parallel'
+  UI Tests:
     docker:
-      - image: circleci/node:14-browsers
+      - image: alpine:3.7
     steps:
-      - run:
-          name: Running In A Container With Node
-          command: |
-            node -v
-  Now-Complete:
+      - cypress/install
+      - cypress/run:
+          name: UI Tests
+          requires:
+            - cypress/install
+          record: true
+          parallel: true # run tests in parallel
+          parallelism: 2 # use 3 CircleCI machines
+          group: "UI Tests"
+          start: 'npm start' # start server before running tests
+          wait-on: "http://localhost:3000"
+          command: 'npx cypress run --record --key=cdad7fdf-f81f-4dac-aef8-42c660a6bd16  --group UI Tests --spec ./cypress/integration/ui/*.js --parallel'
+  Run-All:
+    docker:
+      - image: alpine:3.7
+    steps:
+      - cypress/install
+      - cypress/run:
+          name: Running all the tests with allure=true
+          requires:
+            - cypress/install
+          record: true
+          group: "UI Tests"
+          start: 'npm start' # start server before running tests
+          wait-on: "http://localhost:3000"
+          command: 'npx cypress run --record --key=cdad7fdf-f81f-4dac-aef8-42c660a6bd16 --group Run-All --config video=false --env allure=true,allureResultsPath=allure-results/results'
+  Generate-allure-report:
     docker:
       - image: alpine:3.7
     steps:
       - run:
-          name: Approval Complete
+          name: Generate allure report
           command: |
-            echo 'Do work once the approval has completed'
+            allure/install
+            allure generate allure-results --clean
 
 workflows:
- version: 2
- Example_Workflow:
-   jobs:
-     - Hello-World
-     - I-Have-Code:
-         requires:
-           - Hello-World
-     - Run-With-Node:
-         requires:
-           - Hello-World
-     - Hold-For-Approval:
-         type: approval
-         requires:
-           - Run-With-Node
-           - I-Have-Code
-     - Now-Complete:
-         requires:
-           - Hold-For-Approval
+  test:
+    jobs:
+      - Cypress-Project
