@@ -15,8 +15,8 @@ jobs:
     docker:
       - image: alpine:3.7
     steps:
-      - run: npm ci
       - run: npm install
+      - run: npm ci
       - cypress/install
       - run:
           name: API Tests
