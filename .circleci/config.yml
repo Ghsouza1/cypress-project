@@ -57,5 +57,5 @@ workflows:
             - UI Tests
             - Run-All
           command: |
-            npm install -g allure-commandline
+            npm i allure-commandline
             allure generate --clean
