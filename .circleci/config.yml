@@ -17,10 +17,6 @@ jobs:
     steps:
       - cypress/install
       - run:
-          name: Install
-          command: |
-            npm install
-      - run:
           name: API Tests
           requires:
             - cypress/install
