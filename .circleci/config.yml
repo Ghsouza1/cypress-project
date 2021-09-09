@@ -46,12 +46,16 @@ workflows:
           record: true
           parallel: true # run tests in parallel
           parallelism: 1 # use 3 CircleCI machines
-          group: "UI Tests"
+          group: "Run All"
           start: 'npm start' # start server before running tests
           wait-on: "http://localhost:3000"
           command: 'npx cypress run --record --key=cdad7fdf-f81f-4dac-aef8-42c660a6bd16 --group Run-All --config video=false --env allure=true,allureResultsPath=allure-results/results'
       - cypress/run:
           name: generate allure report
+          requires:
+            - API Tests
+            - UI Tests
+            - Run-All
           command: |
-            sudo npm install -g allure-commandline
+            npm install -g allure-commandline
             allure generate --clean
