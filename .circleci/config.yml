@@ -16,7 +16,7 @@ jobs:
       - image: alpine:3.7
     steps:
       - cypress/install
-      - cypress/run:
+      - run:
           name: API Tests
           requires:
             - cypress/install
@@ -32,7 +32,7 @@ jobs:
       - image: alpine:3.7
     steps:
       - cypress/install
-      - cypress/run:
+      - run:
           name: UI Tests
           requires:
             - cypress/install
@@ -48,7 +48,7 @@ jobs:
       - image: alpine:3.7
     steps:
       - cypress/install
-      - cypress/run:
+      - run:
           name: Running all the tests with allure=true
           requires:
             - cypress/install
@@ -70,4 +70,12 @@ jobs:
 workflows:
   test:
     jobs:
-      - Cypress-Project
+     - Cypress-Project
+     - API Tests:
+         requires:
+           - Cypress-Project
+     - UI Tests
+     - Run-All
+     - Generate-allure-report:
+         requires:
+           - Run-All
