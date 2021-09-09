@@ -11,14 +11,19 @@ jobs:
           name: Cypress-Project
           command: |
             echo 'Cypress-Project is running'
+            npx cypress cypress verify
   API Tests:
     docker:
       - image: alpine:3.7
     steps:
       - cypress/install
       - run:
-          name: API Tests
-          command: 'npm ci'
+          name: Install
+          yarn: true
+          command: |
+            yarn install --frozen-lockfile
+            npm ci
+            npm install
       - run:
           name: API Tests
           requires:
