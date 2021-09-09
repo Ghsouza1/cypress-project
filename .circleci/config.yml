@@ -1,24 +1,18 @@
 version: 2.1
 orbs:
   cypress: cypress-io/cypress@1
-  allure: ayte/allure@0.1.3
-jobs:
-  Cypress-Project:
-    docker:
-      - image: alpine:3.7
-    steps:
-      - run:
-          name: Cypress-Project
-          command: |
-            echo 'Cypress-Project is running'
-  API Tests:
-    docker:
-      - image: alpine:3.7
-    steps:
+workflows:
+  build:
+    jobs:
+      # install dependencies first (on 1 machine)
       - cypress/install
-      - run:
-          name: API Tests
+      # now run tests
+      - cypress/run:
+          # give this job a custom name for clarity
+          name: 'API Tests'
           requires:
+            # use previously installed dependencies
+            # to avoid installing them on each machine running tests
             - cypress/install
           record: true
           parallel: true # run tests in parallel
@@ -27,14 +21,13 @@ jobs:
           start: 'npm start' # start server before running tests
           wait-on: "http://localhost:3000"
           command: 'npx cypress run --record --key=cdad7fdf-f81f-4dac-aef8-42c660a6bd16 --group API Tests --spec ./cypress/integration/api/*.js --parallel'
-  UI Tests:
-    docker:
-      - image: alpine:3.7
-    steps:
-      - cypress/install
-      - run:
-          name: UI Tests
+            # now run tests
+      - cypress/run:
+          # give this job a custom name for clarity
+          name: 'UI Tests'
           requires:
+            # use previously installed dependencies
+            # to avoid installing them on each machine running tests
             - cypress/install
           record: true
           parallel: true # run tests in parallel
@@ -43,46 +36,22 @@ jobs:
           start: 'npm start' # start server before running tests
           wait-on: "http://localhost:3000"
           command: 'npx cypress run --record --key=cdad7fdf-f81f-4dac-aef8-42c660a6bd16  --group UI Tests --spec ./cypress/integration/ui/*.js --parallel'
-  Run-All:
-    docker:
-      - image: alpine:3.7
-    steps:
-      - run: npm ci
-      - cypress/install
-      - run:
-          name: Running all the tests with allure=true
+      - cypress/run:
+          # give this job a custom name for clarity
+          name: 'Run-All'
           requires:
+            # use previously installed dependencies
+            # to avoid installing them on each machine running tests
             - cypress/install
           record: true
+          parallel: true # run tests in parallel
+          parallelism: 1 # use 3 CircleCI machines
           group: "UI Tests"
           start: 'npm start' # start server before running tests
           wait-on: "http://localhost:3000"
           command: 'npx cypress run --record --key=cdad7fdf-f81f-4dac-aef8-42c660a6bd16 --group Run-All --config video=false --env allure=true,allureResultsPath=allure-results/results'
-  Generate-allure-report:
-    docker:
-      - image: alpine:3.7
-    steps:
-      - run:
-          name: Generate allure report
+      - cypress/run:
+          name: generate allure report
           command: |
-            allure/install
-            allure generate allure-results --clean
-
-workflows:
-  test:
-    jobs:
-     - Cypress-Project
-     - API Tests:
-         requires:
-           - Cypress-Project
-     - UI Tests:
-        requires:
-           - Cypress-Project
-     - Run-All:
-        requires:
-          - Cypress-Project
-     - Generate-allure-report:
-         requires:
-           - API Tests
-           - UI Tests
-           - Run-All
+            sudo npm install -g allure-commandline
+            allure generate --clean
