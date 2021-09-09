@@ -80,8 +80,15 @@ workflows:
      - API Tests:
          requires:
            - Cypress-Project
-     - UI Tests
-     - Run-All
+     - UI Tests:
+        requires:
+           - Cypress-Project
+     - Run-All:
+        requires:
+          - Cypress-Project
      - Generate-allure-report:
          requires:
+           - Cypress-Project
+           - API Tests
+           - UI Tests
            - Run-All
