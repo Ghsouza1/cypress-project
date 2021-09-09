@@ -2,7 +2,7 @@ version: 2.1
 orbs:
   cypress: cypress-io/cypress@1
 workflows:
-  build:
+  test_workflow:
     jobs:
       # install dependencies first (on 1 machine)
       - cypress/install
