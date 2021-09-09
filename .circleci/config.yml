@@ -1,8 +1,9 @@
 version: 2.1
 orbs:
   cypress: cypress-io/cypress@1
+  allure: ayte/allure@0.1.3
 workflows:
-  test_workflow:
+  test:
     jobs:
       # install dependencies first (on 1 machine)
       - cypress/install
@@ -57,5 +58,5 @@ workflows:
             - UI Tests
             - Run-All
           command: |
-            npm i allure-commandline
+            scoop install allure
             allure generate --clean
