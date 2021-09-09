@@ -18,10 +18,7 @@ jobs:
       - cypress/install
       - run:
           name: Install
-          yarn: true
           command: |
-            yarn install --frozen-lockfile
-            npm ci
             npm install
       - run:
           name: API Tests
