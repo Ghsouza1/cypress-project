@@ -17,9 +17,11 @@ jobs:
     steps:
       - cypress/install
       - run:
+          command: 'npm install'
+      - run:
           name: API Tests
           requires:
-            - cypress/install
+            - mpm install
           record: true
           parallel: true # run tests in parallel
           parallelism: 2 # use 3 CircleCI machines
@@ -32,6 +34,8 @@ jobs:
       - image: alpine:3.7
     steps:
       - cypress/install
+      - run:
+          command: 'npm install'
       - run:
           name: UI Tests
           requires:
@@ -48,6 +52,8 @@ jobs:
       - image: alpine:3.7
     steps:
       - cypress/install
+      - run:
+          command: 'npm install'
       - run:
           name: Running all the tests with allure=true
           requires:
