@@ -9,5 +9,7 @@ jobs:
       - name: "Tests"
         uses: cypress-io/github-action@v4
         with:
-          command: "npm run cy:start-server-cy:run:headless --parallel"
+          start: npm start
+          wait-on: http://localhost:3000
+          command: npx cypress run --headless --parallel
           parallel: true
