@@ -9,7 +9,8 @@ jobs:
       - name: "Tests"
         uses: cypress-io/github-action@v4
         with:
+          group: API Tests
           start: npm start
           wait-on: http://localhost:3000
-          command: npx cypress run --headless --parallel
           parallel: true
+          command: "npx cypress run --record --key=cdad7fdf-f81f-4dac-aef8-42c660a6bd16 --group API Tests --spec ./cypress/integration/api/*.js --parallel"
