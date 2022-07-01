@@ -9,5 +9,5 @@ jobs:
       - name: "Tests"
         uses: cypress-io/github-action@v4
         with:
-          command: "npm run cy:start-server-cy:run:headless"
+          command: "npm run cy:start-server-cy:run:headless --parallel"
           parallel: true
