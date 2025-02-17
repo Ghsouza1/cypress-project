@@ -28,5 +28,5 @@ jobs:
           parallel: true
       - name: "run e2e tests"
         run: |
-            "npm install --force"
+            "npm audit fix --force"
             "npx cypress run --record --key=cdad7fdf-f81f-4dac-aef8-42c660a6bd16 --group UI Tests --spec ./cypress/e2e/ui/*.js --parallel"
