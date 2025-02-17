@@ -26,4 +26,7 @@ jobs:
           start: npm start
           wait-on: http://localhost:3000
           parallel: true
-          command: "npx cypress run --record --key=cdad7fdf-f81f-4dac-aef8-42c660a6bd16 --group UI Tests --spec ./cypress/e2e/ui/*.js --parallel"
+      - name: "run e2e tests"
+          run: |
+            "npm install"
+            "npx cypress run --record --key=cdad7fdf-f81f-4dac-aef8-42c660a6bd16 --group UI Tests --spec ./cypress/e2e/ui/*.js --parallel"
