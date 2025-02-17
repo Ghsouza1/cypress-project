@@ -1,8 +1,9 @@
 version: 2.1
 orbs:
   cypress: cypress-io/cypress@1
+  allure: ayte/allure@0.1.3
 workflows:
-  build:
+  test_workflow:
     jobs:
       # install dependencies first (on 1 machine)
       - cypress/install
@@ -20,7 +21,7 @@ workflows:
           group: "API Tests"
           start: 'npm start' # start server before running tests
           wait-on: "http://localhost:3000"
-          command: 'npx cypress run --record --key=cdad7fdf-f81f-4dac-aef8-42c660a6bd16 --group API Tests --spec ./cypress/integration/api/*.js --parallel'
+          command: 'npx cypress run --record --key=cdad7fdf-f81f-4dac-aef8-42c660a6bd16 --group API Tests --spec ./cypress/integration/api/*.js --parallel --env allure=true,allureResultsPath=allure-results/results'
             # now run tests
       - cypress/run:
           # give this job a custom name for clarity
@@ -35,4 +36,19 @@ workflows:
           group: "UI Tests"
           start: 'npm start' # start server before running tests
           wait-on: "http://localhost:3000"
-          command: 'npx cypress run --record --key=cdad7fdf-f81f-4dac-aef8-42c660a6bd16  --group UI Tests --spec ./cypress/integration/ui/*.js --parallel'
+          command: 'npx cypress run --record --key=cdad7fdf-f81f-4dac-aef8-42c660a6bd16 --group UI Tests --spec ./cypress/integration/ui/*.js --parallel --env allure=true,allureResultsPath=allure-results/results'
+      - cypress/run:
+          # give this job a custom name for clarity
+          name: 'Generate Allure Report'
+          requires:
+            # use previously installed dependencies
+            # to avoid installing them on each machine running tests
+            - API Tests
+            - UI Tests
+          group: "Allure Report"
+          command: |
+            npm install -g allure-commandline --save-dev
+            allure generate --clean
+          post-steps:
+            - store_artifacts:
+                path: results
